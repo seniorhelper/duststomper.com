@@ -70,11 +70,11 @@
     var dx = dust.getContext('2d'), W = 0, H = 0, motes = [], puffs = [], prints = [], dustOn = true;
     function size() { W = hero.clientWidth; H = hero.clientHeight; dust.width = W * DPR; dust.height = H * DPR; dx.setTransform(DPR, 0, 0, DPR, 0, 0); }
     size(); window.addEventListener('resize', size);
-    var N = RM ? 0 : Math.min(70, Math.round(W / 18));
-    for (var i = 0; i < N; i++) motes.push({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.8 + .4, vx: Math.random() * .25 + .05, vy: -Math.random() * .15, a: Math.random() * .6 + .2, t: Math.random() * 6 });
+    var N = RM ? 0 : Math.min(160, Math.round(W / 9));
+    for (var i = 0; i < N; i++) motes.push({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 2.6 + .8, vx: Math.random() * .4 + .08, vy: -Math.random() * .3, a: Math.random() * .5 + .5, t: Math.random() * 6 });
     var foot = new Path2D('M12 2c3 0 5 3 5 8s-1 9-1 12-2 6-4 6-4-2-4-6c0-3-1-6-1-11S9 2 12 2z');
     function stomp(x, y) {
-      for (var k = 0; k < (RM ? 0 : 46); k++) {
+      for (var k = 0; k < (RM ? 0 : 90); k++) {
         var ang = Math.random() * Math.PI * 2, sp = Math.random() * 2.6 + .6;
         puffs.push({ x: x, y: y, vx: Math.cos(ang) * sp * 1.4, vy: Math.sin(ang) * sp * .55 - Math.random() * 1.6, r: Math.random() * 3 + 1, life: 1 });
       }
@@ -91,7 +91,9 @@
       motes.forEach(function (m) {
         m.t += .01; m.x += m.vx + Math.sin(m.t) * .15; m.y += m.vy + Math.cos(m.t * .8) * .1;
         if (m.x > W + 5) m.x = -5; if (m.y < -5) m.y = H + 5;
-        dx.beginPath(); dx.arc(m.x, m.y, m.r, 0, 6.283); dx.fillStyle = 'rgba(255,236,180,' + (m.a * (.6 + .4 * Math.sin(m.t * 3))) + ')'; dx.fill();
+        var ma = m.a * (.55 + .45 * Math.sin(m.t * 3)); var mg = dx.createRadialGradient(m.x, m.y, 0, m.x, m.y, m.r * 4);
+        mg.addColorStop(0, 'rgba(255,248,215,' + ma + ')'); mg.addColorStop(.4, 'rgba(255,214,130,' + ma * .4 + ')'); mg.addColorStop(1, 'rgba(255,214,130,0)');
+        dx.fillStyle = mg; dx.beginPath(); dx.arc(m.x, m.y, m.r * 4, 0, 6.283); dx.fill();
       });
       prints.forEach(function (p) {
         p.life -= RM ? 0 : .0025;
@@ -103,7 +105,7 @@
       prints = prints.filter(function (p) { return p.life > 0; });
       puffs.forEach(function (p) {
         p.x += p.vx; p.y += p.vy; p.vy += .045; p.vx *= .97; p.life -= .016;
-        dx.beginPath(); dx.arc(p.x, p.y, p.r * (2 - p.life), 0, 6.283); dx.fillStyle = 'rgba(214,180,130,' + Math.max(0, p.life) * .55 + ')'; dx.fill();
+        dx.beginPath(); dx.arc(p.x, p.y, p.r * (2.6 - p.life), 0, 6.283); dx.fillStyle = 'rgba(205,165,110,' + Math.max(0, p.life) * .75 + ')'; dx.fill();
       });
       puffs = puffs.filter(function (p) { return p.life > 0; });
     }
@@ -124,13 +126,13 @@
     if (line) line.style.setProperty('--spark', (6 + p * 86) + '%');
     dctx.clearRect(0, 0, DW, DH);
     // Darkness never fully leaves: corner strength eases from .42 to a floor of .16 as you go deeper into the light.
-    var edge = .28 - .16 * p, cx = DW / 2, cy = DH / 2, R = Math.hypot(DW, DH) / 2;
-    var g = dctx.createRadialGradient(cx, cy, R * (.55 + .2 * p), cx, cy, R * 1.02);
+    var edge = .36 - .2 * p, cx = DW / 2, cy = DH / 2, R = Math.hypot(DW, DH) / 2;
+    var g = dctx.createRadialGradient(cx, cy, R * (.38 + .25 * p), cx, cy, R * 1.02);
     g.addColorStop(0, 'rgba(20,26,38,0)'); g.addColorStop(1, 'rgba(20,26,38,' + edge + ')');
     dctx.fillStyle = g; dctx.fillRect(0, 0, DW, DH);
     if (px >= 0) { // where your pointer is, light presses the dark back
       dctx.globalCompositeOperation = 'destination-out';
-      var lg = dctx.createRadialGradient(px, py, 0, px, py, 220);
+      var lg = dctx.createRadialGradient(px, py, 0, px, py, 320);
       lg.addColorStop(0, 'rgba(0,0,0,.9)'); lg.addColorStop(1, 'rgba(0,0,0,0)');
       dctx.fillStyle = lg; dctx.fillRect(0, 0, DW, DH);
       dctx.globalCompositeOperation = 'source-over';

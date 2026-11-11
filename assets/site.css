@@ -25,11 +25,12 @@ p{margin:0 0 1em}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* The vertical light line — every page, full height */
-.light-line{position:fixed;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;z-index:1;pointer-events:none;
+.light-line{position:fixed;top:0;bottom:0;left:50%;width:3px;margin-left:-1.5px;z-index:1;pointer-events:none;animation:linepulse 3.2s ease-in-out infinite;
   background:linear-gradient(180deg,rgba(255,236,170,0) 0%,#ffe08a 12%,#fff6d8 50%,#f6b6c6 82%,rgba(246,182,198,0) 100%);
-  box-shadow:0 0 12px 3px rgba(255,214,120,.55),0 0 40px 10px rgba(255,226,160,.35)}
-.light-line::after{content:"";position:absolute;left:50%;top:var(--spark,10%);width:10px;height:90px;margin-left:-5px;border-radius:10px;
-  background:radial-gradient(closest-side,#fff,rgba(255,240,200,.6),transparent);filter:blur(1px)}
+  box-shadow:0 0 14px 4px rgba(255,214,120,.75),0 0 60px 18px rgba(255,226,160,.45),0 0 140px 40px rgba(255,236,190,.25)}
+@keyframes linepulse{50%{box-shadow:0 0 20px 6px rgba(255,214,120,.95),0 0 90px 26px rgba(255,226,160,.6),0 0 200px 60px rgba(255,236,190,.35)}}
+.light-line::after{content:"";position:absolute;left:50%;top:var(--spark,10%);width:26px;height:160px;margin-left:-13px;border-radius:20px;
+  background:radial-gradient(closest-side,#fff,rgba(255,240,200,.8),transparent);filter:blur(2px);box-shadow:0 0 40px 14px rgba(255,230,160,.7)}
 @media (max-width:720px){.light-line{left:14px}}
 
 /* Darkness at the edges: light pushes it back, but never all of it */
@@ -195,8 +196,35 @@ footer small{display:block;line-height:1.5}
 @keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.25)}30%{transform:scale(1)}45%{transform:scale(1.18)}}
 
 /* Reveal */
-.js .rv{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s ease}
-.js .rv.in{opacity:1;transform:none}
+.js .rv{opacity:0;transform:translateY(60px) scale(.96);filter:blur(10px);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.2,.8,.2,1),filter 1.2s ease}
+.js .rv.in{opacity:1;transform:none;filter:none}
+
+/* ---------- FX layer ---------- */
+#fx{position:fixed;inset:0;z-index:60;pointer-events:none;width:100%;height:100%}
+.lightcursor .hero{cursor:none}
+/* Intro: darkness, a point of light, then the light breaks open */
+.intro{position:fixed;inset:0;z-index:200;background:#05070d;display:grid;place-items:center;cursor:pointer;transition:opacity 1.2s ease,background-color 1s ease}
+.intro-dot{position:absolute;left:50%;top:42%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:#fff;
+  box-shadow:0 0 30px 10px rgba(255,230,160,.9),0 0 120px 40px rgba(255,200,120,.5);animation:dotin 1.4s ease-out both}
+.intro-word{position:absolute;left:0;right:0;top:calc(42% + 46px);text-align:center;font:italic 400 clamp(1.4rem,3.6vw,2.4rem)/1.2 var(--serif);
+  color:#ffe9b8;letter-spacing:.06em;opacity:0;animation:wordin 1.2s .7s ease forwards;text-shadow:0 0 24px rgba(255,210,130,.8)}
+.intro.go .intro-dot{animation:bloom .9s cubic-bezier(.6,0,.4,1) forwards}
+.intro.go{background-color:transparent}
+.intro.go .intro-word{opacity:0;transition:opacity .3s}
+.intro.gone{opacity:0;pointer-events:none}
+@keyframes dotin{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes wordin{to{opacity:1}}
+@keyframes bloom{60%{opacity:1}to{transform:scale(260);opacity:0;background:#fff7e0;filter:blur(2px)}}
+/* God-rays over the hero */
+.godrays{position:absolute;inset:-30%;z-index:1;pointer-events:none;mix-blend-mode:screen;opacity:.9;transform-origin:66% 37%;
+  background:repeating-conic-gradient(from 0deg at 66% 37%,rgba(255,236,190,.5) 0 1.6deg,rgba(255,236,190,0) 4deg 8deg);filter:blur(3px);
+  -webkit-mask-image:radial-gradient(38% 42% at 66% 37%,#000 0,rgba(0,0,0,.6) 35%,transparent 75%);mask-image:radial-gradient(38% 42% at 66% 37%,#000 0,rgba(0,0,0,.6) 35%,transparent 75%);
+  animation:rays 90s linear infinite,raysbreathe 7s ease-in-out infinite}
+@keyframes raysbreathe{50%{opacity:.5}}
+/* Gold shimmer sweeping across section headings */
+.shine-text{background:linear-gradient(100deg,var(--ink) 0 40%,#f3c55b 48%,#fff3cc 50%,#f3c55b 52%,var(--ink) 60% 100%);background-size:250% 100%;background-position:100% 0;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s ease-in-out infinite}
+@keyframes shine{0%,30%{background-position:100% 0}70%,100%{background-position:0 0}}
 
 /* Plain pages */
 .page{padding:60px 0 80px}
@@ -204,7 +232,9 @@ footer small{display:block;line-height:1.5}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-  .js .rv,.trail svg.fp{opacity:1;transform:none}
+  .js .rv,.trail svg.fp{opacity:1;transform:none;filter:none}
+  .godrays{display:none}
+  .shine-text{color:var(--ink);background:none}
   .hero-media video{display:none}
 }
 .void .msg .card{background:#fffdf8;box-shadow:0 20px 50px -20px rgba(0,0,0,.45)}
