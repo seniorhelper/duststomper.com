@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self' https://formsubmit.co; form-action https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Dust Stomper | Moving Earth and Doing Good, for the Glory of God</title>
+<meta name="description" content="Dust Stomper is a faith ministry in its earliest days. Zach is praying about its future. Share a prayer request, fellowship, partnership or collaboration, and remember: today is a gift.">
+<link rel="canonical" href="https://duststomper.com/">
+<meta name="theme-color" content="#fffaf1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dust Stomper">
+<meta property="og:title" content="Dust Stomper | Moving earth and doing good, for the glory of God">
+<meta property="og:description" content="A faith ministry in prayer. 86,400 seconds today, and today is all we have planned.">
+<meta property="og:url" content="https://duststomper.com/">
+<meta property="og:image" content="https://duststomper.com/assets/img/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Footprints in wet sand along a turquoise sea at sunrise">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="preload" as="image" href="assets/img/beach-poster-960.webp" imagesrcset="assets/img/beach-poster-960.webp 960w, assets/img/beach-poster-1920.webp 1920w" imagesizes="100vw">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Organization","@id":"https://duststomper.com/#org","name":"Dust Stomper","url":"https://duststomper.com/","logo":"https://duststomper.com/favicon.svg","description":"A faith-based ministry in prayer and preparation, based near Brighton, Colorado.","founder":{"@type":"Person","name":"Zach Wennstedt"},"areaServed":"Colorado Front Range"},
+ {"@type":"WebSite","@id":"https://duststomper.com/#site","url":"https://duststomper.com/","name":"Dust Stomper","publisher":{"@id":"https://duststomper.com/#org"}},
+ {"@type":"MusicRecording","name":"I Dream in Color","byArtist":{"@type":"Person","name":"Zach Wennstedt"},"duration":"PT4M48S","url":"https://duststomper.com/#song","audio":{"@type":"AudioObject","contentUrl":"https://duststomper.com/assets/audio/i-dream-in-color.mp3","encodingFormat":"audio/mpeg"}}
+]}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="light-line" aria-hidden="true"></div>
+<canvas id="darkness" aria-hidden="true"></canvas>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="sunGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2b13d"/><stop offset=".6" stop-color="#e98a6f"/><stop offset="1" stop-color="#d9617f"/></linearGradient>
+    <symbol id="foot" viewBox="0 0 24 34"><path d="M12.5 9c3.2 0 5.3 3 5.1 8.2-.2 4.3-1.4 7.4-1.4 10.2 0 3.2-1.8 5.6-4.2 5.6s-4.4-2.2-4.4-5.3c0-2.8-1.6-5.4-1.4-9.6C6.4 12.7 9 9 12.5 9z"/><circle cx="7.6" cy="6.6" r="2.4"/><circle cx="11.6" cy="4.2" r="2.1"/><circle cx="15.2" cy="3.9" r="1.8"/><circle cx="18.1" cy="5.2" r="1.6"/><circle cx="20.2" cy="7.6" r="1.4"/></symbol>
+  </defs>
+</svg>
+
+<header class="daybar">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="Dust Stomper home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="18" r="7" fill="#f2b13d"/><g stroke="#e98a6f" stroke-width="2" stroke-linecap="round"><path d="M16 4v4M5 9l3 3M27 9l-3 3M2 20h4M26 20h4"/></g><path d="M3 26h26" stroke="#18a9b0" stroke-width="2.4" stroke-linecap="round"/></svg>
+      Dust Stomper
+    </a>
+    <nav aria-label="Sections">
+      <a href="#today">Today</a><a href="#prayer">Prayer</a><a href="#song">Song</a><a href="#baptism">Baptism</a><a href="#connect">Connect</a>
+    </nav>
+    <div class="tick" aria-live="off"><b id="barTick">86,400</b> seconds left today</div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" aria-labelledby="heroTitle">
+  <div class="hero-media" aria-hidden="true">
+    <img src="assets/img/beach-poster-960.webp" srcset="assets/img/beach-poster-960.webp 960w, assets/img/beach-poster-1920.webp 1920w" sizes="100vw" alt="" width="1920" height="1080" fetchpriority="high">
+    <video id="heroVideo" muted loop playsinline preload="none" data-sm="assets/video/beach-720.mp4" data-lg="assets/video/beach-1280.mp4" aria-hidden="true"></video>
+  </div>
+  <canvas id="dust" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-card rv in">
+      <p class="eyebrow">A ministry in prayer · Brighton, Colorado</p>
+      <h1 id="heroTitle">Dust Stomper</h1>
+      <p class="lede">Moving earth and doing good, everywhere we can, for the glory of God.</p>
+      <p class="status"><span class="dot" aria-hidden="true"></span><span><strong>Zach is praying</strong> about the future of this site and ministry.</span></p>
+      <p class="hint">Tap the sand to stomp a little dust.</p>
+    </div>
+  </div>
+</section>
+
+<section id="today" class="today" aria-labelledby="todayTitle">
+  <div class="wrap">
+    <div class="split">
+      <div class="timer rv">
+        <p class="eyebrow">86,400 seconds</p>
+        <h2 id="todayTitle">This is the day</h2>
+        <div class="ring" role="timer" aria-label="Seconds left today">
+          <svg viewBox="0 0 320 320" aria-hidden="true"><circle class="track" cx="160" cy="160" r="150"/><circle class="arc" id="ringArc" cx="160" cy="160" r="150"/></svg>
+          <div class="num"><b id="ringNum">86,400</b><span>seconds left today</span></div>
+        </div>
+        <p>Every day starts with the same gift: 86,400 seconds. At midnight the count begins again. Not one of them is promised twice.</p>
+        <blockquote class="card" style="margin:22px 0 0;text-align:left">
+          <p class="verse">“The LORD has done it this very day; let us rejoice today and be glad.”</p>
+          <span class="ref">Psalm 118:24 NIV</span>
+        </blockquote>
+      </div>
+      <div class="calendar card rv">
+        <div class="cal-head">
+          <button id="calPrev" type="button" aria-label="Previous month">‹</button>
+          <h3 id="calTitle">This month</h3>
+          <button id="calNext" type="button" aria-label="Next month">›</button>
+        </div>
+        <div class="cal-grid" id="calGrid" role="list" aria-labelledby="calTitle"></div>
+        <div class="plan">
+          <small id="planDate">Today</small>
+          <strong>Today is all we have planned.</strong>
+          <small>The present is truly a gift. Tomorrow belongs to God.</small>
+        </div>
+        <p style="margin:14px 0 0;font-size:.92rem;color:var(--ink-2)">“Therefore do not worry about tomorrow, for tomorrow will worry about itself. Each day has enough trouble of its own.” <span class="ref">Matthew 6:34 NIV</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="prayer" aria-labelledby="prayerTitle">
+  <div class="wrap">
+    <div class="split rev">
+      <div class="prayer-art rv">
+        <img src="assets/img/hands-800.webp" srcset="assets/img/hands-800.webp 800w, assets/img/hands-1400.webp 1400w" sizes="(min-width:900px) 50vw, 100vw" alt="Folded hands in prayer, glowing in warm sunrise light over the mountains" width="1400" height="782" loading="lazy">
+      </div>
+      <div class="rv">
+        <p class="eyebrow">Where things stand today</p>
+        <h2 id="prayerTitle">Praying first. Waiting to be led.</h2>
+        <p>Dust Stomper will be home to a faith-based ministry, Lord willing. Right now it is a prayer. Zach is asking God what this should become, and he is waiting to be led before building anything bigger.</p>
+        <p>If you would pray with us, or if something here speaks to you, we would love to hear from you.</p>
+        <blockquote class="card" style="margin:20px 0">
+          <p class="verse">“Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.”</p>
+          <span class="ref">Philippians 4:6 NIV</span>
+        </blockquote>
+        <a class="btn" href="#connect">Send a prayer request</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="earth" aria-labelledby="earthTitle">
+  <div class="wrap">
+    <div class="split">
+      <div class="earth-art rv"><canvas id="earthCanvas" role="img" aria-label="A small tunnel carves through the soil while green sprouts rise up behind it"></canvas></div>
+      <div class="rv">
+        <p class="eyebrow">Where the name came from</p>
+        <h2 id="earthTitle">Even the smallest creatures move earth</h2>
+        <p>It started with a guinea pig. Zach watched his daughter’s little one burrowing in its bedding and it hit him: God gave even the smallest creatures the ability to <em>move earth</em>.</p>
+        <p>That is the heart of Dust Stomper. Every one of us can move a little earth. A kind word, a meal, a prayer, a hand up. Stomp the dust, do good everywhere you can, and give God the glory.</p>
+        <blockquote class="card" style="margin:20px 0 0">
+          <p class="verse">“But ask the animals, and they will teach you, or the birds in the sky, and they will tell you.”</p>
+          <span class="ref">Job 12:7 NIV</span>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="walk" aria-labelledby="walkTitle">
+  <div class="wrap">
+    <div class="quote rv">
+      <p class="eyebrow">Footprints in the sand</p>
+      <h2 id="walkTitle" class="sr">Never walking alone</h2>
+      <p class="line">On the hardest stretch of the beach, look closely. You were never walking alone.</p>
+    </div>
+    <div class="trail" id="trail" aria-hidden="true"><div class="sand"></div></div>
+    <blockquote class="card rv" style="max-width:720px;margin:26px auto 0;text-align:center">
+      <p class="verse">“So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you and uphold you with my righteous right hand.”</p>
+      <span class="ref">Isaiah 41:10 NIV</span>
+    </blockquote>
+  </div>
+</section>
+
+<section class="verses" aria-labelledby="versesTitle">
+  <div class="wrap">
+    <p class="eyebrow">Light for the walk</p>
+    <h2 id="versesTitle">Words to carry today</h2>
+    <div class="rotator" id="rotator" aria-live="polite">
+      <figure><blockquote>“The light shines in the darkness, and the darkness has not overcome it.”</blockquote><figcaption class="ref">John 1:5 NIV</figcaption></figure>
+      <figure><blockquote>“Because of the LORD’s great love we are not consumed, for his compassions never fail. They are new every morning; great is your faithfulness.”</blockquote><figcaption class="ref">Lamentations 3:22–23 NIV</figcaption></figure>
+      <figure><blockquote>“Teach us to number our days, that we may gain a heart of wisdom.”</blockquote><figcaption class="ref">Psalm 90:12 NIV</figcaption></figure>
+      <figure><blockquote>“What is your life? You are a mist that appears for a little while and then vanishes.”</blockquote><figcaption class="ref">James 4:14 NIV</figcaption></figure>
+      <figure><blockquote>“In the same way, let your light shine before others, that they may see your good deeds and glorify your Father in heaven.”</blockquote><figcaption class="ref">Matthew 5:16 NIV</figcaption></figure>
+      <figure><blockquote>“Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.”</blockquote><figcaption class="ref">Galatians 6:9 NIV</figcaption></figure>
+      <figure><blockquote>“The earth is the LORD’s, and everything in it, the world, and all who live in it.”</blockquote><figcaption class="ref">Psalm 24:1 NIV</figcaption></figure>
+      <figure><blockquote>“But those who hope in the LORD will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.”</blockquote><figcaption class="ref">Isaiah 40:31 NIV</figcaption></figure>
+    </div>
+    <div class="rot-ctrl">
+      <button id="rotPrev" type="button">‹ Back</button>
+      <button id="rotPause" type="button" aria-pressed="false">Pause</button>
+      <button id="rotNext" type="button">Next ›</button>
+    </div>
+  </div>
+</section>
+
+<section class="dark-play" aria-labelledby="darkTitle">
+  <div class="wrap">
+    <div class="rv" style="max-width:720px;margin:0 auto 26px;text-align:center">
+      <p class="eyebrow">Light pushes darkness out</p>
+      <h2 id="darkTitle">Push back the dark</h2>
+      <p>Drag across the darkness (or tap the button) and watch the light come through. Darkness feels cold, empty and lost. Light is new life, a new beginning, hope. You can push it back a long way, but not all the way. That day belongs to God alone.</p>
+    </div>
+    <div class="void rv" id="void">
+      <div style="position:absolute;inset:0;background:radial-gradient(70% 70% at 50% 60%,#fff6d8 0%,#ffe2a6 30%,#f8c2c9 60%,#9fd9d8 100%)" aria-hidden="true"></div>
+      <div style="position:absolute;inset:0;display:grid;place-content:center;text-align:center;padding:24px" aria-hidden="true">
+        <p style="font:600 clamp(2.4rem,8vw,5rem)/1 var(--serif);color:#7a4a12;margin:0">HOPE</p>
+        <p style="font:500 1.1rem/1.4 var(--serif);color:var(--ink);margin:.4em 0 0">“I am the light of the world.” <span class="ref">John 8:12 NIV</span></p>
+      </div>
+      <canvas id="voidCanvas" aria-label="Darkness you can drag to reveal light. It never clears completely." role="img"></canvas>
+      <div class="msg" id="voidMsg" role="status">
+        <div class="card"><p>Not all of it. Not yet.</p><p style="font-size:1rem;font-weight:500">“But about that day or hour no one knows, not even the angels in heaven, nor the Son, but only the Father.”</p><span class="ref">Matthew 24:36 NIV</span></div>
+      </div>
+      <div class="meter"><span id="voidPct">0% light</span><span class="bar"><i id="voidBar"></i></span></div>
+    </div>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px">
+      <button class="btn" id="voidBtn" type="button">Let there be light</button>
+      <button class="btn ghost" id="voidReset" type="button">Start again</button>
+    </div>
+  </div>
+</section>
+
+<section id="song" class="song" aria-labelledby="songTitle">
+  <div class="wrap">
+    <div class="card rv player">
+      <img src="assets/img/i-dream-in-color-cover.webp" alt="Cover art for I Dream in Color: a gray sky above a red rose on gold cloth" width="272" height="432" loading="lazy">
+      <div>
+        <p class="eyebrow">New worship song</p>
+        <h2 id="songTitle">I Dream in Color</h2>
+        <p>A new worship song from Zach. Press play when you have a quiet moment.</p>
+        <audio controls preload="none" src="assets/audio/i-dream-in-color.mp3">Your browser cannot play this audio. <a href="assets/audio/i-dream-in-color.mp3">Download the song</a>.</audio>
+        <p style="font-size:.88rem;color:var(--ink-2);margin-top:10px">Musicians: Zach is forming a Christian band too. <a href="https://sickmindsgroup.com/">Meet Sick Minds Group</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="baptism" class="baptism" aria-labelledby="baptismTitle">
+  <div class="wrap">
+    <div class="split">
+      <div class="water rv">
+        <img src="assets/img/baptism-800.webp" srcset="assets/img/baptism-800.webp 800w, assets/img/baptism-1400.webp 1400w" sizes="(min-width:900px) 50vw, 100vw" alt="Two people standing in a clear river at sunrise, backlit by golden light" width="1400" height="782" loading="lazy">
+        <div class="caustics" aria-hidden="true"></div><div class="shine" aria-hidden="true"></div>
+      </div>
+      <div class="rv">
+        <p class="eyebrow">Ready for the water?</p>
+        <h2 id="baptismTitle">Be baptized, in real life</h2>
+        <p>If your heart is telling you it is time to be baptized, we would love to point you to a church family near us. Ignite Church in Brighton, Colorado can talk with you about baptism and what it means, and walk with you through it.</p>
+        <blockquote class="card" style="margin:20px 0">
+          <p class="verse">“Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit.”</p>
+          <span class="ref">Matthew 28:19 NIV</span>
+        </blockquote>
+        <a class="btn" href="https://myignitechurch.cc/" rel="noopener" target="_blank">Visit Ignite Church<span class="sr"> (opens in a new tab)</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="connect" class="connect" aria-labelledby="connectTitle">
+  <div class="wrap">
+    <div class="split" style="align-items:start">
+      <div class="rv">
+        <p class="eyebrow">Open door</p>
+        <h2 id="connectTitle">Let’s connect</h2>
+        <p>Fellowship, partnerships, prayer requests, collaborations, or anything at all. <strong>How can we make your day better?</strong> We strive to make you smile.</p>
+        <p class="honest"><strong>Honest note:</strong> we have challenges of our own and we are not wealthy, so we are not able to help financially at this time. But we will read every message, pray over it, and help however else we can. This is where we are today. Present. Truly a gift.</p>
+        <blockquote class="card" style="margin:20px 0 0">
+          <p class="verse">“Ask and it will be given to you; seek and you will find; knock and the door will be opened to you.”</p>
+          <span class="ref">Matthew 7:7 NIV</span>
+        </blockquote>
+      </div>
+      <form id="connectForm" class="card rv" method="POST" novalidate data-a="aW5mbw==" data-b="ZXlldG9hZC5jb20=">
+        <input type="hidden" name="_subject" value="Dust Stomper message">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="source_site" value="duststomper.com">
+        <div class="hp" aria-hidden="true"><label for="hp">Leave this empty</label><input id="hp" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
+        <div class="grid">
+          <fieldset class="chips">
+            <legend>What’s on your heart?</legend>
+            <label><input type="checkbox" name="reason" value="Prayer request"> Prayer request</label>
+            <label><input type="checkbox" name="reason" value="Fellowship"> Fellowship</label>
+            <label><input type="checkbox" name="reason" value="Partnership"> Partnership</label>
+            <label><input type="checkbox" name="reason" value="Collaboration"> Collaboration</label>
+            <label><input type="checkbox" name="reason" value="Make my day better"> Make my day better</label>
+            <label><input type="checkbox" name="reason" value="Something else"> Something else</label>
+          </fieldset>
+          <div class="grid two">
+            <div><label for="name">Your name *</label><input id="name" name="name" autocomplete="name" required maxlength="80"></div>
+            <div><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="120"></div>
+          </div>
+          <div><label for="phone">Phone (optional)</label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="30"></div>
+          <div><label for="message">Your message *</label><textarea id="message" name="message" required maxlength="4000" placeholder="Share a prayer request, an idea, or just say hello."></textarea></div>
+          <label class="consent"><input type="checkbox" name="consent" value="yes" required> <span>I agree that Dust Stomper may contact me about this message. Prayer requests are kept private and never shared publicly without my permission. See the <a href="privacy/">privacy page</a>. *</span></label>
+          <button class="btn" type="submit">Send with love</button>
+          <p id="formMsg" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <p style="font:600 1.4rem var(--serif);color:var(--ink);margin:0 0 6px">Dust Stomper</p>
+        <p style="margin:0 0 10px">Moving earth and doing good, for the glory of God. Brighton, Colorado.</p>
+        <p style="margin:0"><a href="#connect">Connect</a> · <a href="privacy/">Privacy</a> · <a href="https://myignitechurch.cc/" rel="noopener">Ignite Church</a> · <a href="https://sickmindsgroup.com/">Sick Minds Group</a></p>
+      </div>
+      <div>
+        <small>Scripture quotations taken from The Holy Bible, New International Version® NIV®. Copyright © 1973, 1978, 1984, 2011 by Biblica, Inc.™ Used by permission. All rights reserved worldwide.</small>
+        <small style="margin-top:8px">© <span id="yr">2026</span> Dust Stomper. “I Dream in Color” © Zach Wennstedt.</small>
+      </div>
+    </div>
+  </div>
+  <div class="heart-line"><svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.3C.3 8.4 2.2 4.5 6 4.5c2.2 0 3.6 1.2 4.4 2.5h3.2c.8-1.3 2.2-2.5 4.4-2.5 3.8 0 5.7 3.9 4 7.2C19.5 16.4 12 21 12 21z"/></svg><a href="https://eyetoad.com" rel="nofollow">Need a website?</a></div>
+</footer>
+<script src="assets/site.js" defer></script>
+</body>
+</html>
